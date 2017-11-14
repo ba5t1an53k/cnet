@@ -135,7 +135,7 @@ public:
 	@in: alpha -> the gradient descent learning rate
 	@out: error -> the training error over all samples
 	*/
-	void train(Eigen::MatrixXd& sample_matrix, Eigen::MatrixXd& target_matrix, double alpha, double min_error_deviation, double* error);
+	void train(Eigen::MatrixXd& sample_matrix, Eigen::MatrixXd& target_matrix, double alpha, double max_error_deviation, long max_epochs, double* error);
 	/*
 	Calculates the residual between output and target
 	@in: output -> network's prediction

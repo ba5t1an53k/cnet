@@ -72,7 +72,7 @@ void neural_network::predict(Eigen::MatrixXd& values, Eigen::MatrixXd** output) 
 	*output = _y;
 }
 
-void neural_network::train(Eigen::MatrixXd & sample_matrix, Eigen::MatrixXd & target_matrix, double alpha, double min_error_deviation, double * error)
+void neural_network::train(Eigen::MatrixXd & sample_matrix, Eigen::MatrixXd & target_matrix, double alpha, double max_error_deviation, long max_epochs, double * error)
 {
 	int num_epochs = 0;
 	bool is_training = true;
@@ -92,7 +92,7 @@ void neural_network::train(Eigen::MatrixXd & sample_matrix, Eigen::MatrixXd & ta
 		}
 		double loss = mean_square_error(predictions, target_matrix);
 		std::cout << "INFO:: Training epoch " << num_epochs++ << ", loss=" << std::to_string(loss) << std::endl;
-		if ((last_error - loss) < min_error_deviation)
+		if ((last_error - loss) < max_error_deviation && num_epochs == max_epochs)
 		{
 			is_training = false;
 		}
