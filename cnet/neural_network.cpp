@@ -94,6 +94,7 @@ void neural_network::train(Eigen::MatrixXd & sample_matrix, Eigen::MatrixXd & ta
 		std::cout << "INFO:: Training epoch " << num_epochs++ << ", loss=" << std::to_string(loss) << std::endl;
 		if ((last_error - loss) < max_error_deviation && num_epochs == max_epochs)
 		{
+
 			is_training = false;
 		}
 
